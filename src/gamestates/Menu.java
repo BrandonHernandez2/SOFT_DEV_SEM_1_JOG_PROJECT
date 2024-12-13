@@ -13,27 +13,41 @@ public class Menu extends State implements Statemethods {
 
 	// TODO: all fields are private
 	// TODO: create a MenuButton[] called buttons and set to new MenuButton[3]
+	private MenuButton[] buttons = new MenuButton[3];
 	// TODO: create a Buffered image called backgroundImg.
+	private BufferedImage backgroundImg;
 	// TODO: create ints for menuX, menuY, menuWidth, menuHeight
+	private int menuX, menuY, menuWidth, menuHeight;
 
 	public Menu(Game game) {
 		// TODO: call super passing in game
+		super(game);
 		// TODO: call loadButtons()
+		loadButtons();
 		// TODO: call loadBackground();
+		loadBackground();
 	}
 
 	private void loadBackground() {
 		// TODO: set backgroundImg to LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND)0
+		backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
 		// TODO: set menuWidth to (int) (backgroundImg.getWidth()  * Game.SCALE
+		menuWidth = (int) (backgroundImg.getWidth() * Game.SCALE);
 		// TODO: set menuHeight to (int) (backgroundImg.getHeight() * Game.SCALE
+		menuHeight = (int) (backgroundImg.getHeight() * Game.SCALE);
 		// TODO: set menuX to Game.GAME_WIDTH / 2 - menuWidth / 2
+		menuX = Game.GAME_WIDTH / 2 - menuWidth / 2;
 		// TODO: set menuY to (int) (45 * Game.SCALE)
+		menuY = (int) (45 * Game.SCALE);
 	}
 
 	private void loadButtons() {
 		// TODO: set buttons[0] to new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamestate.PLAYING)
+		buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamestate.PLAYING);
 		// TODO: set buttons[1] to new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamestate.OPTIONS)
+		buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamestate.OPTIONS);
 		// TODO: set buttons[2] to new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 1, Gamestate.QUIT)
+		buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 1, Gamestate.QUIT);
 	}
 
 	@Override
@@ -47,8 +61,10 @@ public class Menu extends State implements Statemethods {
 	public void draw(Graphics g) {
 		// TODO: g.drawImage passing in
 		// backgroundImg, menuX, menuY, menuWidth, menuHeight, null
+		g.drawImage(backgroundImg, menuX, menuY, menuWidth, menuHeight, null);
 		// TODO: for each MenuButton mb in loadButtons()
 		// TODO: call mb.draw(g)
+		buttons[0] = mb.draw(g);
 	}
 
 	@Override
@@ -61,6 +77,8 @@ public class Menu extends State implements Statemethods {
 	public void mousePressed(MouseEvent e) {
 		// TODO: for each MenuButton mb in buttons
 		// TODO: if isIn(e, mb) then call mb.setMousePressed(true)
+		if (isIn(e,mb))
+			if (mb.setMousePressed(true););
 	}
 
 	@Override
@@ -89,6 +107,8 @@ public class Menu extends State implements Statemethods {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO: if e.getKeyCode() is equal to KeyEvent.VK_ENTER then set Gamestate.state to GameState.Playing
+		if (e.getKeyCode() == KeyEvent.VK_ENTER)
+				Gamestate.state = Gamestate.PLAYING;
 	}
 
 	@Override

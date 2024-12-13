@@ -25,7 +25,9 @@ public class GamePanel extends JPanel {
 
 	private void setPanelSize() {
 		// TODO: create a Dimension called size and set to new Dimension passing in GAME_WIDTH, and GAME_HEIGHT
+		Dimension size = new Dimension(GAME_WIDTH, GAME_HEIGHT);
 		// TODO: call setPreferredSize passing in size
+		setPreferredSize(size);
 	}
 
 	public void updateGame() {
@@ -34,7 +36,9 @@ public class GamePanel extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		// TODO: call super.paintComponent(g)
+		super.paintComponent(g);
 		// TODO: call game.render passing in g
+		game.render(g);
 	}
 
 	public Game getGame() {

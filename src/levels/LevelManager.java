@@ -4,20 +4,27 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import main.Game;
+import main.GamePanel;
 import utilz.LoadSave;
 
 public class LevelManager {
 
 	// TODO: all fields are private
 	// TODO: create a Game called game
+	private Game game;
 	// TODO: create a BufferedImage[] called levelSprite
+	private BufferedImage[] levelSprite;
 	// TODO: create a Level called levelOne
+	private Level levelOne;
 
 
 	public LevelManager(Game game) {
 		// TODO: set this game to game
+		this.game = game;
 		// TODO: call importOutsideSprites()
+		importOutsideSprites();
 		// TODO: set levelOne to newLevel(LoadSave.GetLevelData()
+		levelOne = new Level(LoadSave.GetLevelData());
 	}
 
 	private void importOutsideSprites() {
@@ -44,6 +51,7 @@ public class LevelManager {
 
 	public Level getCurrentLevel() {
 		// TODO: return levelOne
+		return levelOne;
 	}
 
 }

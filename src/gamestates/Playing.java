@@ -11,35 +11,48 @@ import main.Game;
 public class Playing extends State implements Statemethods {
 	// TODO: all fields are private
 	// TODO: create a Player called player
+	private Player player;
 	// TODO: create a LevelManager called levelManager
+	private LevelManager levelManager;
 
 	public Playing(Game game) {
 		// TODO: call super(game)
+		super(game);
 		// TODO: call initClasses()
+		initClasses();
 	}
 
 	private void initClasses() {
 		// TODO: set levelManager to new LevelManager(game)
+		levelManager = new LevelManager(game);
 		// TODO: set player to new Player(200, 200, (int) (64 * Game.SCALE), (int) (40 * Game.SCALE)
+		player = new Player(200, 200, (int) (64 * Game.SCALE), (int) (40 * Game.SCALE));
 		// TODO: call player.loadLvlData(levelManager.getCurrentLevel().getLevelData())
+		player.loadLvlData(levelManager.getCurrentLevel().getLevelData());
 	}
 
 	@Override
 	public void update() {
 		// TODO: call levelManger.update()
+		levelManager.update();
 		// TODO: call player.update();
+		player.update();
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		// TODO: call levelManger.draw(g)
+		levelManager.draw(g);
 		// TODO: call player.render(g)
+		player.render(g);
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO: if (e.getButton() is equal to MouseEvent.Button1)
 		// TODO: call player.setAttacking(true)
+		if (e.getButton() == MouseEvent.BUTTON1)
+			player.setAttacking(true);
 	}
 
 	@Override
