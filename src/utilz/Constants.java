@@ -6,7 +6,6 @@ public class Constants {
 
 	public static class UI {
 		public static class Buttons {
-			// TODO: All variables are public static final int
 			// B_WIDTH_DEFAULT set to 140
 			public static final int B_WIDTH_DEFAULT = 140;
 			// B_HEIGHT_DEFAULT set to 56
